@@ -1,7 +1,7 @@
 const { Team } = require('../models')
 
 async function authorization (req, res, next) {
-  const id = req.params.id
+  const id = req.team.id
   const team = await Team.findOne({
     where: { id }
   })

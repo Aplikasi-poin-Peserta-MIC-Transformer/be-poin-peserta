@@ -51,6 +51,20 @@ class TeamController {
       next(err);
     }
   };
+
+  static async findTeam(req, res, next) {
+    try {
+      const team = await Team.findOne({
+        where: {
+          id: req.team.id
+        }
+      });
+      res.status(200).json(team);
+    }
+    catch(err) {
+      next(err);
+    }
+  }
 };
 
 module.exports = TeamController;
