@@ -15,7 +15,7 @@ class TeamController {
       res.status(201).json({ id, nama_team, EventId });
     }
     catch(err) {
-      next(err)
+      console.log(err)
     };
   };
 

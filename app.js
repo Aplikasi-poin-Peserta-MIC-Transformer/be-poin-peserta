@@ -16,7 +16,7 @@ app.use(cors());
 //routes
 app.use(routes);
 //error handler
-app.use(errorHandler);
+// app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`App is listening at port: ${port}`)

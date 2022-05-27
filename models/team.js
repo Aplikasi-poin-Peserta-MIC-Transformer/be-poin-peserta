@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Team.hasMany(models.Member, {foreignKey: 'TeamId', sourceKey: 'id'})
-      Team.belongsTo(modelsEvent, {foreignKey: 'EventId', targetKey: 'id'})
+      Team.belongsTo(models.Event, {foreignKey: 'EventId', targetKey: 'id'})
     }
   }
   Team.init({
