@@ -11,9 +11,6 @@ module.exports = {
       nama: {
         type: Sequelize.STRING
       },
-      kode_event: {
-        type: Sequelize.STRING
-      },
       gbr_pos: {
         type: Sequelize.STRING
       },

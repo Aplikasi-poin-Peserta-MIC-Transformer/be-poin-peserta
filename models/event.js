@@ -29,19 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    kode_event: {
-      type: DataTypes.STRING,
-      allowNull:false,
-      unique: true,
-      validate: {
-        notEmpty: {
-          msg: `Event Code is Required`
-        },
-        notNull: {
-          msg: `Event Code is Required`
-        }
-      }
-    },
     gbr_pos: DataTypes.STRING,
     jml_pos: DataTypes.INTEGER
   }, {
