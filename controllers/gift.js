@@ -1,103 +1,110 @@
-const { Gift } = require('../models')
+const { Gift, User } = require('../models');
+const user = require('../models/user');
 
 class GiftController {
+  static async add(req, res, next) {
+    try {
+      const giftData = {
+        nama: req.body.nama,
+        image: req.body.image,
+        stok: req.body.stok,
+        price: req.body.price
+      };
+      const newGift = await Gift.create(giftData);
+      const { id, nama } = newGift;
+      res.status(201).json({ id, nama });
+    }
+    catch(err) {
+      next(err)
+    };
+  }
 
+  static async findAll(req, res, next) {
+    try {
+      const gifts = await Gift.findAll({
+        order: [['id', 'asc']]
+      });
+      res.status(200).json(gifts);
+    } catch (err) {
+      next(err)
+    };
+  }
+
+  static async findById (req, res, next) {
+    const id = req.params.id
+    try {
+      const gift = await Gift.findOne({
+        where: { id }
+      })
+      if (gift) {
+        res.status(200).json(gift)
+      } else {
+        next({ message: 'Gift Not Found' })
+      }
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  static async update(req, res, next) {
+    const id = req.params.id
+    try {
+      const giftData = {
+        nama: req.body.nama,
+        image: req.body.image,
+        stok: req.body.stok,
+        price: req.body.price
+      }
+      const gift = await Gift.update(giftData, {
+        where: { id },
+        returning: true
+      })
+      res.status(200).json(gift[1])
+  }
+    catch (err) {
+      next(err)
+    }
+  }
+
+  static async delete(req, res, next) {
+    const id = req.params.id;
+    try {
+      const gift = await Gift.destroy({
+        where: { id }
+      })
+      res.status(200).json({ message: `Gift is Deleted` })
+    } catch (err) {
+        next(err)
+    };
+  }
+
+  static async redeem(req, res, next) {
+    const id = req.params.id
+    try {
+      const gift = await Gift.findOne({
+        where: { id }
+      })
+      const giftData = {
+        stok: +gift.stok - 1
+      };
+      const price = +gift.price
+      const userData = {
+        poin: +req.user.poin - price
+      };
+      const updatedGift = await Gift.update(giftData, {
+        where: { id },
+        returning: true
+      })
+      const updatedUser = await User.update(userData, {
+        where: { id },
+        returning: true
+      })
+      res.status(200).json(updatedGift[1])
+  }
+    catch (err) {
+      next(err)
+    }
+  }
 }
-
-// // Get All Gifts
-// router.get('/', (req, res) => {
-//   Gift.find({})
-//   .then(gift => {
-//       res.json(gift);
-//   })
-//   .catch(err => {
-//       res.status(404).json({isSuccess: false, result: err.json})
-//   })
-// });
-
-// // Get Specific Gift
-// router.get('/:id', (req, res) => {
-//   Gift.findById(req.params.id)
-//       .then(gift => res.json(gift))
-//       .catch(err => res.status(404).json({isSuccess: false, result: err.json}))
-// });
-
-// // Create New Gift
-// router.post('/', authenticate.verifyUser, (req, res) => {
-//   const newGift = new Gift({
-//       name: req.body.name,
-//       description: req.body.description,
-//       image_url: req.body.image_url,
-//       quantity: req.body.quantity
-//   });
-
-//   newGift.save()
-//       .then(gift => {
-//           res.json(gift)
-//       })
-//       .catch(err => {
-//           res.status(404).json(err)
-//       });
-// });
-
-// // Delete Gift
-// router.delete('/:id', authenticate, (req, res) => {
-//   Gift.findById(req.params.id)
-//       .then(gift => {
-//           gift.remove()
-//           .then(() => {
-//               res.json({isSuccess: true})
-//           })
-//           .catch(() => {
-//               res.json({isSuccess: false})
-//           })
-//       }).catch(() => {
-//           res.status(404).json({isSuccess: false})
-//       })
-// });
-
-// // Update Gift
-// router.put('/:id', authenticate, (req, res) => {
-//   Gift.updateOne(
-//       { _id: req.params.id }, 
-//       {
-//           $set: {
-//               name: req.body.name,
-//               description: req.body.description,
-//               image_url: req.body.image_url,
-//               quantity: req.body.quantity
-//           }
-//       })
-//       .then(() => {
-//           Gift.findById(req.params.id)
-//           .then(gift => res.json(gift))
-//           .catch(err => {
-//               res.status(404).json({isSuccess: false, result: err.json})
-//           })
-//       }).catch(err => {
-//           res.status(404).json({isSuccess: false, result: err})
-//       });
-// });
-
-// // Redeem Gift
-// router.put('/:id/redeem', authenticate, quantityChecker, (req, res) => {
-//   Gift.updateOne(
-//       { _id: req.params.id }, 
-//       {
-//           $inc: {
-//               quantity: -1
-//           }
-//       })
-//   .then(() => {
-//       Gift.findById(req.params.id)
-//       .then(gift => res.json(gift))
-//       .catch(err => {
-//           res.status(404).json({isSuccess: false, result: err.json})
-//       })
-//   }).catch(err => {
-//       res.status(404).json({isSuccess: false, result: err})
-//   });
-// });
-
 
 module.exports = GiftController;

@@ -40,6 +40,18 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    price: {
+      type: DataTypes.INTEGER,
+      validate: {
+        isInt: {
+          msg: `Price Must Be a Number`
+        },
+        min: {
+          args: [0],
+          msg: `Minimum Price is 0`
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Gift',
