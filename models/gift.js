@@ -1,5 +1,4 @@
 'use strict';
-const { INTEGER } = require('sequelize');
 const {
   Model
 } = require('sequelize');
@@ -12,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Gift.belongsTo(models.Event, {foreignKey: 'EventId', targetKey: 'id'})
     }
   };
   Gift.init({

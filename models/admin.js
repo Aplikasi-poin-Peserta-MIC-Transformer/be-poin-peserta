@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Event extends Model {
+  class Admin extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,30 +11,37 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Event.hasMany(models.Team, {foreignKey: 'EventId', sourceKey: 'id'})
-      Event.hasMany(models.User, {foreignKey: 'EventId', sourceKey: 'id'})
-      Event.hasMany(models.Gift, {foreignKey: 'EventId', sourceKey: 'id'})
     }
   }
-  Event.init({
-    nama: {
+  Admin.init({
+    username: {
       type: DataTypes.STRING,
       allowNull:false,
-      unique: true,
       validate: {
         notEmpty: {
-          msg: `Event Name is Required`
+          msg: `Username is Required`
         },
         notNull: {
-          msg: `Event Name is Required`
+          msg: `Username is Required`
         }
       }
     },
-    gbr_pos: DataTypes.STRING,
-    jml_pos: DataTypes.INTEGER
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: `Password is Required`
+        },
+        len: {
+          args: [6,100],
+          msg: `Password Should Have Minimum 6 Characters`
+        }
+      }
+    }
   }, {
     sequelize,
-    modelName: 'Event',
+    modelName: 'Admin',
   });
-  return Event;
+  return Admin;
 };
