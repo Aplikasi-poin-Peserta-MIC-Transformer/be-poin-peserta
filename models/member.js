@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     no_wa: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull:false,
       unique: true,
       validate: {
