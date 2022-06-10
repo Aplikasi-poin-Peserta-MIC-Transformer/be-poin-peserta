@@ -11,7 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.Point, {foreignKey: 'TeamId_or_UserId', sourceKey: 'id'})
+      User.hasMany(models.Pos_step, {foreignKey: 'TeamId_or_UserId', sourceKey: 'id'})
+      User.hasMany(models.Log_point, {foreignKey: 'UserId', sourceKey: 'id'})
+      User.belongsTo(models.Team, {foreignKey: 'TeamId', targetKey: 'id'})
       User.belongsTo(models.Event, {foreignKey: 'EventId', targetKey: 'id'})
+      User.belongsToMany(models.Gift, {through: models.User_Gift, foreignKey: 'UserId', otherKey: 'GiftId'})
     }
   }
   User.init({
@@ -40,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    nmr_wa: {
+    no_wa: {
       type: DataTypes.STRING,
       allowNull:false,
       unique: true,
@@ -53,6 +58,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    barcode: DataTypes.STRING,
     perusahaan: {
       type: DataTypes.STRING,
       allowNull:false,
@@ -65,20 +71,12 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    EventId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: `Please choose the event`
-        },
-        notNull: {
-          msg: `Please choose the event`
-        }
-      }
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: 'user'
     },
-    barcode: DataTypes.STRING,
-    poin: DataTypes.INTEGER
+    TeamId: DataTypes.INTEGER,
+    EventId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',

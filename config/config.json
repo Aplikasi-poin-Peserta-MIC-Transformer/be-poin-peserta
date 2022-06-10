@@ -15,9 +15,9 @@
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "password": "DB@Poin@2022",
+    "database": "penilaian_peserta",
+    "host": "103.161.184.8",
+    "dialect": "mariadb"
   }
 }

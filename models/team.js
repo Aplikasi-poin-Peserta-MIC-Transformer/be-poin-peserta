@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Team.hasMany(models.Member, {foreignKey: 'TeamId', sourceKey: 'id'})
+      Team.hasMany(models.User, {foreignKey: 'TeamId', sourceKey: 'id'})
+      Team.hasMany(models.Point, {foreignKey: 'TeamId_or_UserId', sourceKey: 'id'})
+      Team.hasMany(models.Pos_step, {foreignKey: 'TeamId_or_UserId', sourceKey: 'id'})
       Team.belongsTo(models.Event, {foreignKey: 'EventId', targetKey: 'id'})
     }
   }
@@ -43,20 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     barcode: DataTypes.STRING,
-    point: DataTypes.INTEGER,
-    pos_step: DataTypes.INTEGER,
-    EventId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: `Team is unauthenticated`
-        },
-        notNull: {
-          msg: `Team is unauthenticated`
-        }
-      }
-    }
+    EventId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Team',

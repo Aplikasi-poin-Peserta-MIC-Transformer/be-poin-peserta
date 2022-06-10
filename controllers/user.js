@@ -7,7 +7,7 @@ class UserController {
     const userData = {
       nama: req.body.nama,
       password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
-      nmr_wa: req.body.nmr_wa,
+      no_wa: req.body.no_wa,
       perusahaan: req.body.perusahaan,
       EventId: req.body.EventId
     };
@@ -23,13 +23,13 @@ class UserController {
 
   static async login(req, res, next) {
     const userData = {
-      nmr_wa: req.body.nmr_wa,
+      no_wa: req.body.no_wa,
       password: req.body.password,
     };
     try {
       const user = await User.findOne({
         where: {
-          nmr_wa: userData.nmr_wa
+          nmr_wa: userData.no_wa
         }
       });
       if (!user) {
@@ -42,6 +42,7 @@ class UserController {
           const payload = {
             id: user.id,
             nama: user.nama,
+            role: user.role,
             EventId: user.EventId
           };
           const accessToken = AccessToken.generate(payload);
@@ -55,11 +56,23 @@ class UserController {
   };
 
   static async findUser(req, res, next) {
+    const id = req.user.id
     try {
       const user = await User.findOne({
-        where: {
-          id: req.user.id
-        }
+        where: { id }
+      });
+      res.status(200).json(user);
+    }
+    catch(err) {
+      next(err);
+    }
+  }
+
+  static async findUserById(req, res, next) {
+    const id = req.params.id
+    try {
+      const user = await User.findOne({
+        where: { id }
       });
       res.status(200).json(user);
     }

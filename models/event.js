@@ -13,11 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Event.hasMany(models.Team, {foreignKey: 'EventId', sourceKey: 'id'})
       Event.hasMany(models.User, {foreignKey: 'EventId', sourceKey: 'id'})
-      Event.hasMany(models.Gift, {foreignKey: 'EventId', sourceKey: 'id'})
     }
   }
   Event.init({
-    nama: {
+    nama_event: {
       type: DataTypes.STRING,
       allowNull:false,
       unique: true,
@@ -30,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    gbr_pos: DataTypes.STRING,
+    gambar: DataTypes.STRING,
     jml_pos: DataTypes.INTEGER
   }, {
     sequelize,

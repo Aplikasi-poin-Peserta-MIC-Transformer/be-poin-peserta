@@ -4,13 +4,13 @@ class EventController {
   static async add(req, res, next) {
     try {
       const eventData = {
-        nama: req.body.name,
-        gbr_pos: req.body.gbr_pos,
+        nama_event: req.body.nama_event,
+        gambar: req.body.gambar,
         jml_pos: req.body.jml_pos
       };
       const newEvent = await Event.create(eventData);
-      const { id, nama } = newEvent;
-      res.status(201).json({ id, nama });
+      const { id, nama_event } = newEvent;
+      res.status(201).json({ id, nama_event });
     }
     catch(err) {
       next(err)
@@ -32,8 +32,8 @@ class EventController {
     const id = req.params.id
     try {
       const eventData = {
-        nama: req.body.name,
-        gbr_pos: req.body.gbr_pos,
+        nama_event: req.body.nama_event,
+        gambar: req.body.gambar,
         jml_pos: req.body.jml_pos
       };
       const event = await Event.update(eventData, {
