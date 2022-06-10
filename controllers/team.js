@@ -5,14 +5,14 @@ const AccessToken = require('../helpers/accessToken')
 class TeamController {
   static async register(req, res, next) {
     const teamData = {
-      nama_team: req.body.nama_team,
+      nama_tim: req.body.nama_tim,
       password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
       EventId: req.body.EventId
     };
     try {
       const newTeam = await Team.create(teamData);
-      const { id, nama_team, EventId } = newTeam;
-      res.status(201).json({ id, nama_team, EventId });
+      const { id, nama_tim, EventId } = newTeam;
+      res.status(201).json({ id, nama_tim, EventId });
     }
     catch(err) {
       console.log(err)
@@ -21,13 +21,13 @@ class TeamController {
 
   static async login(req, res, next) {
     const teamData = {
-      nama_team: req.body.nama_team,
+      nama_tim: req.body.nama_tim,
       password: req.body.password,
     };
     try {
       const team = await Team.findOne({
         where: {
-          nama_team: teamData.nama_team
+          nama_tim: teamData.nama_tim
         }
       });
       if (!team) {
@@ -39,11 +39,11 @@ class TeamController {
         } else {
           const payload = {
             id: team.id,
-            nama_team: team.nama_team,
+            nama_tim: team.nama_tim,
             EventId: team.EventId
           };
           const accessToken = AccessToken.generate(payload);
-          res.status(200).json({ id: team.id, nama_team: team.nama_team, accessToken});
+          res.status(200).json({ id: team.id, nama_tim: team.nama_tim, accessToken});
         }
       }
     }
@@ -53,11 +53,23 @@ class TeamController {
   };
 
   static async findTeam(req, res, next) {
+    const id = req.team.id
     try {
       const team = await Team.findOne({
-        where: {
-          id: req.team.id
-        }
+        where: { id }
+      });
+      res.status(200).json(team);
+    }
+    catch(err) {
+      next(err);
+    }
+  }
+
+  static async findTeamById(req, res, next) {
+    const id = req.params.id
+    try {
+      const team = await Team.findOne({
+        where: { id }
       });
       res.status(200).json(team);
     }

@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Team.init({
-    nama_team: {
+    nama_tim: {
       type: DataTypes.STRING,
       allowNull:false,
       unique: true,

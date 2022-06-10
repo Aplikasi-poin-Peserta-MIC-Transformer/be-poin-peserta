@@ -6,5 +6,6 @@ const authorization = require('../middlewares/teamAuthorization');
 route.post('/register', TeamController.register);
 route.post('/login', TeamController.login);
 route.get('/team', authentication, authorization, TeamController.findTeam);
+route.get('/:id', authentication, authorization, TeamController.findTeamById);
 
 module.exports = route;

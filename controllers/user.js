@@ -21,6 +21,24 @@ class UserController {
     };
   };
 
+  static async registerAdmin(req, res, next) {
+    const userData = {
+      nama: req.body.nama,
+      password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
+      no_wa: req.body.no_wa,
+      perusahaan: req.body.perusahaan,
+      role: 'admin'
+    };
+    try {
+      const newUser = await User.create(userData);
+      const { id, nama, EventId } = newUser;
+      res.status(201).json({ id, nama, EventId });
+    }
+    catch(err) {
+      console.log(err)
+    };
+  };
+
   static async login(req, res, next) {
     const userData = {
       no_wa: req.body.no_wa,
@@ -29,7 +47,7 @@ class UserController {
     try {
       const user = await User.findOne({
         where: {
-          nmr_wa: userData.no_wa
+          no_wa: userData.no_wa
         }
       });
       if (!user) {
@@ -68,7 +86,7 @@ class UserController {
     }
   }
 
-  static async findUserById(req, res, next) {
+  static async findById(req, res, next) {
     const id = req.params.id
     try {
       const user = await User.findOne({

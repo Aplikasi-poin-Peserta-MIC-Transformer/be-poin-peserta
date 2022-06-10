@@ -28,6 +28,19 @@ class EventController {
     };
   }
 
+  static async findById(req, res, next) {
+    const id = req.params.id
+    try {
+      const event = await Event.findOne({
+        where: { id }
+      });
+      res.status(200).json(event);
+    }
+    catch(err) {
+      next(err);
+    }
+  }
+
   static async update(req, res, next) {
     const id = req.params.id
     try {

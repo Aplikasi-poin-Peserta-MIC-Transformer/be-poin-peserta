@@ -5,7 +5,7 @@ async function authorization (req, res, next) {
   const user = await User.findOne({
     where: { id }
   })
-  if (req.user.id === user.id) {
+  if (user) {
     next()
   } else {
     res.status(403).json({ message: "You are unauthorized to do this action!" })

@@ -30,7 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     gambar: DataTypes.STRING,
-    jml_pos: DataTypes.INTEGER
+    jml_pos: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   }, {
     sequelize,
     modelName: 'Event',
