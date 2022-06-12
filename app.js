@@ -14,9 +14,43 @@ app.use(express.json());
 app.use(express.static('uploads'));
 app.use(cors());
 //routes
+app.get('/', (req, res) => {
+  res.send({ res: 'Welcome to API MIC Transformer'});
+})
 app.use(routes);
 //error handler
 // app.use(errorHandler);
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'GET, POST, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Origin', 'Content-Type', 'Authorization');
+  next()
+})
+
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  const err = new Error('URL Not Found')
+  err.status = 400;
+  next(err);
+});
+
+// error handler
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500);
+  console.log({
+    error: {
+      status: err.status || 500,
+      message: err.message
+    }
+  });
+  res.status(200).send({
+    error: {
+      status: err.status || 500,
+      message: err.message
+    }
+  })
+});
 
 app.listen(port, () => {
   console.log(`App is listening at port: ${port}`)
