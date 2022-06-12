@@ -16,7 +16,7 @@ node_modules/
 lib-cov
 
 # dotenv environment variables file
-.env
+# .env
 .env.local
 .env.*.local
 
