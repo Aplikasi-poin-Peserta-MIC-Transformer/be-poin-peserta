@@ -1,6 +1,20 @@
+'use strict';
+
+const Sequelize = require('sequelize');
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+
 const { Team } = require('../models')
 const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken')
+
+
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
 class TeamController {
   static async register(req, res, next) {
@@ -74,6 +88,27 @@ class TeamController {
       res.status(200).json(team);
     }
     catch(err) {
+      next(err);
+    }
+  }
+
+  static async findKlasemen(req, res, next) {
+    const EventId = req.query.EventId
+    const status = req.query.status
+    try {
+      // join table points dan Teams berdasarkan id dan jumlah point tertinggi
+      const [results, metadata] = await sequelize.query(`
+        SELECT b.nama_tim, a.total_poin, c.nama_event, a.status
+        FROM Points AS a
+        INNER JOIN 
+        Teams AS b ON a.TeamId_or_UserId = b.id
+        INNER JOIN
+        Events AS c ON a.EventId = c.id
+        WHERE a.status = "${status}" AND c.id = "${EventId}"
+      `);
+      res.status(200).json(results);
+    }
+    catch (err) {
       next(err);
     }
   }
