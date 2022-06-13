@@ -9,19 +9,25 @@ class UserController {
       nama: req.body.nama,
       password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
       no_wa: req.body.no_wa,
+      barcode: `user/${req.body.no_wa}`,
       perusahaan: req.body.perusahaan,
       EventId: req.body.EventId
     };
     try {
-      const newUser = await User.create(userData);
-      const { id, nama, role, EventId } = newUser;
-      const barcodeData = `${role}/${nama}/${id}`
-      const barcode = await generateQR(barcodeData)
-      const barcoded = await User.update({barcode}, {
-        where: { id },
-        returning: true
-      })
-      res.status(201).json({ id, nama, EventId });
+      const user = await User.findOne({ where: { no_wa: userData.no_wa } });
+      if (!Boolean(user)) {
+        const newUser = await User.create(userData);
+        const { id, nama, role, EventId } = newUser;
+        const barcodeData = `${role}/${nama}/${id}`
+        const barcode = `user/${userData.no_wa}`
+        const barcoded = await User.update({barcode}, {
+          where: { id },
+          returning: true
+        })
+        res.status(201).json({ id, nama, EventId });
+      } else {
+        res.status(401).json({ message: 'User sudah ada' });
+      }
     }
     catch(err) {
       console.log(err)
