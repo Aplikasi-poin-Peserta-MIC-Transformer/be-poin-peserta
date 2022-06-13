@@ -5,7 +5,7 @@ const AccessToken = require('../helpers/accessToken')
 class TeamController {
   static async register(req, res, next) {
     const teamData = {
-      nama_tim: req.body.nama_tim,
+      nama_tim: req.body.nama_tim.toLowerCase().replace(/\s+/g, ''),
       password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
       EventId: req.body.EventId
     };
@@ -21,7 +21,7 @@ class TeamController {
 
   static async login(req, res, next) {
     const teamData = {
-      nama_tim: req.body.nama_tim,
+      nama_tim: req.body.nama_tim.toLowerCase().replace(/\s+/g, ''),
       password: req.body.password,
     };
     try {
