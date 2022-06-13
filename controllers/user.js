@@ -1,6 +1,7 @@
 const { User } = require('../models')
 const Crypto = require('../helpers/cryptojs')
-const AccessToken = require('../helpers/accessToken')
+const AccessToken = require('../helpers/accessToken');
+const generateQR = require('../helpers/qrcode');
 
 class UserController {
   static async register(req, res, next) {
@@ -13,7 +14,13 @@ class UserController {
     };
     try {
       const newUser = await User.create(userData);
-      const { id, nama, EventId } = newUser;
+      const { id, nama, role, EventId } = newUser;
+      const barcodeData = `${role}/${nama}/${id}`
+      const barcode = await generateQR(barcodeData)
+      const barcoded = await User.update({barcode}, {
+        where: { id },
+        returning: true
+      })
       res.status(201).json({ id, nama, EventId });
     }
     catch(err) {

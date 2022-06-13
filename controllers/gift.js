@@ -81,6 +81,7 @@ class GiftController {
 
   static async redeem(req, res, next) {
     const id = req.params.id
+    const userId = req.user.id
     try {
       const gift = await Gift.findOne({
         where: { id }
@@ -97,10 +98,10 @@ class GiftController {
         returning: true
       })
       const updatedUser = await User.update(userData, {
-        where: { id },
+        where: { id: userId },
         returning: true
       })
-      res.status(200).json(updatedGift[1])
+      res.status(200).json('gift is redeemed')
   }
     catch (err) {
       next(err)
