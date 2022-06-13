@@ -1,14 +1,13 @@
 const { Gift, User } = require('../models');
-const user = require('../models/user');
 
 class GiftController {
   static async add(req, res, next) {
     try {
       const giftData = {
         nama: req.body.nama,
-        image: req.body.image,
-        stok: req.body.stok,
-        price: req.body.price
+        gambar: req.body.gambar,
+        harga: req.body.harga,
+        stok: req.body.stok
       };
       const newGift = await Gift.create(giftData);
       const { id, nama } = newGift;
@@ -51,15 +50,17 @@ class GiftController {
     try {
       const giftData = {
         nama: req.body.nama,
-        image: req.body.image,
-        stok: req.body.stok,
-        price: req.body.price
+        gambar: req.body.gambar,
+        harga: req.body.harga,
+        stok: req.body.stok
       }
       const gift = await Gift.update(giftData, {
         where: { id },
         returning: true
       })
-      res.status(200).json(gift[1])
+      if (gift) {
+        res.status(200).json('gift is updated')
+      }
   }
     catch (err) {
       next(err)
