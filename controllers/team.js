@@ -75,7 +75,8 @@ class TeamController {
         where: { id }
       });
       const event = await Event.findOne({ where: { id: team.EventId } })
-      res.status(200).json({ ...team.dataValues, nama_event: event.nama_event});
+      const [total_poin, metadata] = await sequelize.query(`select ifnull(total_poin,0) as point from Points where TeamId_or_UserId = ${id} limit 0,1`)
+      res.status(200).json({ ...team.dataValues, nama_event: event.nama_event, total_poin: total_poin[0]?.point });
     }
     catch (err) {
       next(err);
@@ -84,17 +85,13 @@ class TeamController {
 
   static async findAllTeam(req, res, next) {
     try {
-      const teams = await Team.findAll({include: Event});
-      let teamData = []
-      teams.map(team => {
-        teamData.push({
-          nama_tim: team.nama_tim,
-          username: team.username,
-          barcode: team.barcode,
-          EventId: team.EventId, 
-          nama_event: team.Event.nama_event})
-      })
-      res.status(200).json(teamData);
+      const [results, metadata] = await sequelize.query(`
+        SELECT a.*, b.nama_event, IFNULL((SELECT total_poin FROM Points WHERE TeamId_or_UserId = a.id LIMIT 0,1),0) AS total_poin
+        FROM Teams AS a
+        RIGHT JOIN
+        Events AS b ON a.EventId = b.id
+      `);
+      res.status(200).json(results);
     }
     catch (err) {
       next(err);
@@ -104,19 +101,13 @@ class TeamController {
   static async findTeamByEvent(req, res, next) {
     const EventId = req.params.id
     try {
-      const teams = await Team.findAll({
-        where: { EventId }, include: Event
-      });
-      let teamData = []
-      teams.map(team => {
-        teamData.push({
-          nama_tim: team.nama_tim,
-          username: team.username,
-          barcode: team.barcode,
-          EventId: team.EventId, 
-          nama_event: team.Event.nama_event})
-      })
-      res.status(200).json(teamData);
+      const [results, metadata] = await sequelize.query(`
+        SELECT a.*, b.nama_event, IFNULL((SELECT total_poin FROM Points WHERE TeamId_or_UserId = a.id LIMIT 0,1),0) AS total_poin
+        FROM Teams AS a
+        RIGHT JOIN
+        Events AS b ON a.EventId = b.id where b.id = ${EventId}
+      `);
+      res.status(200).json(results);
     }
     catch (err) {
       next(err);
