@@ -144,13 +144,15 @@ class TeamController {
       // join table points dan Teams berdasarkan id dan jumlah point tertinggi
       const eventName = await sequelize.query(`SELECT nama_event FROM Events WHERE id = ${EventId}`, { type: Sequelize.QueryTypes.SELECT })
       const [results, metadata] = await sequelize.query(`
-        SELECT b.nama_tim, a.total_poin, c.nama_event, a.status
-        FROM Points AS a
-        INNER JOIN 
-        Teams AS b ON a.TeamId_or_UserId = b.id
+        SELECT * FROM (
+        SELECT a.nama_tim, b.nama_event, 
+        IFNULL((SELECT total_poin FROM Points WHERE TeamId_or_UserId = a.id AND STATUS = "${status}" LIMIT 0, 1),0) AS total_poin,
+        IFNULL((SELECT STATUS FROM Points WHERE TeamId_or_UserId = a.id LIMIT 0, 1),0) AS STATUS
+        FROM Teams a 
         INNER JOIN
-        Events AS c ON a.EventId = c.id
-        WHERE a.status = "${status}" AND c.id = "${EventId}"
+        Events AS b ON a.EventId = b.id
+        WHERE a.EventId = "${EventId}"
+        ) AS v WHERE STATUS = "0" OR STATUS = "${status}" ORDER BY total_poin DESC
       `);
       const data = {
         nama_event: eventName[0]?.nama_event,
