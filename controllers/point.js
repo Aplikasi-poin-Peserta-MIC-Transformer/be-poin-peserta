@@ -3,40 +3,21 @@ const { Point } = require('../models')
 class PointController {
   static async add(req, res, next) {
     try {
-      const scanResult = req.body.scan_result
-      const pointAdded = req.body.point_add
-      const resultArr = scanResult.split('/');
       const pointData = {
-        TeamId_or_UserId: resultArr[2],
-        total_poin: +pointAdded,
-        status: resultArr[0]
+          total_poin: req.body.total_poin,
+          status: req.body.status,
+          TeamId_or_UserId: req.body.TeamId_or_UserId,
+          EventId: req.body.eventId,
       }
+      const poinByUser = await Point.findOne({ where: { TeamId_or_UserId: pointData.TeamId_or_UserId, status: pointData.status, EventId: pointData.EventId } })
+      if (!Boolean(poinByUser)) {
       const newPoint = await Point.create(pointData);
       const { TeamId_or_UserId, status, total_poin } = newPoint;
-      res.status(201).json({ TeamId_or_UserId, status, total_poin });
-    }
-    catch(err) {
-      next(err)
-    };
-  }
-
-  static async update(req, res, next) {
-    try {
-      const scanResult = req.body.scan_result
-      const pointAdded = req.body.point_add
-      const resultArr = scanResult.split('/')
-      const scannedId = resultArr[2]
-      const userPoint = await Point.findOne({
-        where: { TeamId_or_UserId: scannedId }
-      });
-      const pointData = {
-        total_poin: +userPoint.total_poin + +pointAdded
+        res.status(201).json({ TeamId_or_UserId, status, total_poin });
+      } else {
+        await Point.update({ total_poin: (parseInt(poinByUser.total_poin) + parseInt(pointData.total_poin)) }, { where: { TeamId_or_UserId: pointData.TeamId_or_UserId, status: pointData.status, EventId: pointData.EventId } })
+        res.status(201).json('Point has been updated');
       }
-      const updatedPoint = await Point.update(pointData, {
-        where: { TeamId_or_UserId: scannedId },
-        returning: true
-      })
-      res.status(200).json('Point has been updated');
     }
     catch(err) {
       next(err)
