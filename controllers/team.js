@@ -105,6 +105,7 @@ class TeamController {
     const status = req.query.status
     try {
       // join table points dan Teams berdasarkan id dan jumlah point tertinggi
+      const eventName = await sequelize.query(`SELECT nama_event FROM Events WHERE id = ${EventId}`, { type: Sequelize.QueryTypes.SELECT })
       const [results, metadata] = await sequelize.query(`
         SELECT b.nama_tim, a.total_poin, c.nama_event, a.status
         FROM Points AS a
@@ -114,7 +115,11 @@ class TeamController {
         Events AS c ON a.EventId = c.id
         WHERE a.status = "${status}" AND c.id = "${EventId}"
       `);
-      res.status(200).json(results);
+      const data = {
+        nama_event: eventName[0]?.nama_event,
+        klasemen: results
+      }
+      res.status(200).json(data);
     }
     catch (err) {
       next(err);
