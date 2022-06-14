@@ -14,33 +14,39 @@ if (config.use_env_variable) {
 class TeamController {
   static async register(req, res, next) {
     const teamData = {
-      nama_tim: req.body.nama_tim.toLowerCase().replace(/\s+/g, ''),
+      username: req.body.username.toLowerCase().replace(/\s+/g, ''),
+      nama_tim: req.body.nama_tim,
       password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
       EventId: req.body.EventId
     };
     try {
-      const newTeam = await Team.create(teamData);
-      const { id, nama_tim, EventId } = newTeam;
-      res.status(201).json({ id, nama_tim, EventId });
+      const team = await Team.findOne({ where: { username: teamData.username } });
+      if (!Boolean(team)) {
+        const newTeam = await Team.create(teamData);
+        const { id, username, nama_tim, EventId } = newTeam;
+        res.status(201).json({ id, username, nama_tim, EventId });
+      } else {
+        res.status(400).json({ message: 'Team already exist' });
+      }
     }
-    catch(err) {
+    catch (err) {
       next(err)
     };
   };
 
   static async login(req, res, next) {
     const teamData = {
-      nama_tim: req.body.nama_tim.toLowerCase().replace(/\s+/g, ''),
+      username: req.body.username.toLowerCase().replace(/\s+/g, ''),
       password: req.body.password,
     };
     try {
       const team = await Team.findOne({
         where: {
-          nama_tim: teamData.nama_tim
+          username: teamData.username
         }
       });
       if (!team) {
-        res.status(401).json({ message: 'Wrong Team Name or Password'});
+        res.status(401).json({ message: 'Wrong Team Name or Password' });
       } else {
         const decrypted = Crypto.decrypt(team.password);
         if (decrypted !== teamData.password) {
@@ -48,15 +54,16 @@ class TeamController {
         } else {
           const payload = {
             id: team.id,
+            username: team.username,
             nama_tim: team.nama_tim,
             EventId: team.EventId
           };
           const accessToken = AccessToken.generate(payload);
-          res.status(200).json({ id: team.id, nama_tim: team.nama_tim, accessToken});
+          res.status(200).json({ id: team.id, username: team.username, nama_tim: team.nama_tim, accessToken });
         }
       }
     }
-    catch(err) {
+    catch (err) {
       next(err);
     }
   };
@@ -69,7 +76,7 @@ class TeamController {
       });
       res.status(200).json(team);
     }
-    catch(err) {
+    catch (err) {
       next(err);
     }
   }
@@ -82,7 +89,7 @@ class TeamController {
       });
       res.status(200).json(teams);
     }
-    catch(err) {
+    catch (err) {
       next(err);
     }
   }
@@ -95,7 +102,7 @@ class TeamController {
       });
       res.status(200).json(team);
     }
-    catch(err) {
+    catch (err) {
       next(err);
     }
   }
