@@ -1,7 +1,6 @@
 const { User } = require('../models')
 const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken');
-const generateQR = require('../helpers/qrcode');
 
 class UserController {
   static async register(req, res, next) {
@@ -30,7 +29,7 @@ class UserController {
       }
     }
     catch(err) {
-      console.log(err)
+      next(err)
     };
   };
 
@@ -53,7 +52,7 @@ class UserController {
       }
     }
     catch(err) {
-      console.log(err)
+      next(err)
     };
   };
 

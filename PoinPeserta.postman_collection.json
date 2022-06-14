@@ -453,6 +453,171 @@
 			"response": []
 		},
 		{
+			"name": "localhost:3000/api/v1/teams/member/:id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nama_member_1",
+							"value": "member 1",
+							"type": "text"
+						},
+						{
+							"key": "no_wa_1",
+							"value": "0812000000",
+							"type": "text"
+						},
+						{
+							"key": "nama_member_2",
+							"value": "member 2",
+							"type": "text"
+						},
+						{
+							"key": "no_wa_2",
+							"value": "0813000000",
+							"type": "text"
+						},
+						{
+							"key": "nama_member_3",
+							"value": "member 3",
+							"type": "text"
+						},
+						{
+							"key": "no_wa_3",
+							"value": "0814000000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/teams/member/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"teams",
+						"member",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/teams/member/:id",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nama_member_1",
+									"value": "member 1",
+									"type": "text"
+								},
+								{
+									"key": "no_wa_1",
+									"value": "0812000000",
+									"type": "text"
+								},
+								{
+									"key": "nama_member_2",
+									"value": "member 2",
+									"type": "text"
+								},
+								{
+									"key": "no_wa_2",
+									"value": "0813000000",
+									"type": "text"
+								},
+								{
+									"key": "nama_member_3",
+									"value": "member 3",
+									"type": "text"
+								},
+								{
+									"key": "no_wa_3",
+									"value": "0814000000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/teams/member/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"teams",
+								"member",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "439"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1b7-SN6YdoND5BP4QoBR23qL1PsYphI\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Jun 2022 09:48:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nama_member\": \"member 1\",\n        \"no_wa\": \"0812000000\",\n        \"TeamId\": \"1\",\n        \"createdAt\": \"2022-06-14T09:48:32.101Z\",\n        \"updatedAt\": \"2022-06-14T09:48:32.101Z\"\n    },\n    {\n        \"id\": 2,\n        \"nama_member\": \"member 2\",\n        \"no_wa\": \"0813000000\",\n        \"TeamId\": \"1\",\n        \"createdAt\": \"2022-06-14T09:48:32.101Z\",\n        \"updatedAt\": \"2022-06-14T09:48:32.101Z\"\n    },\n    {\n        \"id\": 3,\n        \"nama_member\": \"member 3\",\n        \"no_wa\": \"0814000000\",\n        \"TeamId\": \"1\",\n        \"createdAt\": \"2022-06-14T09:48:32.101Z\",\n        \"updatedAt\": \"2022-06-14T09:48:32.101Z\"\n    }\n]"
+				}
+			]
+		},
+		{
 			"name": "localhost:3000/api/v1/teams/team",
 			"request": {
 				"method": "GET",

@@ -1,9 +1,6 @@
-'use strict';
-
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
-
 const { Team } = require('../models')
 const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken')
@@ -27,7 +24,7 @@ class TeamController {
       res.status(201).json({ id, nama_tim, EventId });
     }
     catch(err) {
-      console.log(err)
+      next(err)
     };
   };
 
