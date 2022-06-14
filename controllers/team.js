@@ -81,6 +81,16 @@ class TeamController {
     }
   }
 
+  static async findAllTeam(req, res, next) {
+    try {
+      const teams = await Team.findAll();
+      res.status(200).json(teams);
+    }
+    catch (err) {
+      next(err);
+    }
+  }
+
   static async findTeamByEvent(req, res, next) {
     const EventId = req.params.id
     try {
