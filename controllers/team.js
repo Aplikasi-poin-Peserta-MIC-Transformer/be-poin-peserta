@@ -72,8 +72,9 @@ class TeamController {
     const id = req.team.id
     try {
       const team = await Team.findOne({
-        where: { id }
+        where: { id }, include: Event
       });
+      team['nama_event'] = team.Event.nama_event
       res.status(200).json(team);
     }
     catch (err) {
@@ -84,7 +85,16 @@ class TeamController {
   static async findAllTeam(req, res, next) {
     try {
       const teams = await Team.findAll({include: Event});
-      res.status(200).json(teams);
+      let teamData = []
+      teams.map(team => {
+        teamData.push({
+          nama_tim: team.nama_tim,
+          username: team.username,
+          barcode: team.barcode,
+          EventId: team.EventId, 
+          nama_event: team.Event.nama_event})
+      })
+      res.status(200).json(teamData);
     }
     catch (err) {
       next(err);
@@ -97,7 +107,16 @@ class TeamController {
       const teams = await Team.findAll({
         where: { EventId }, include: Event
       });
-      res.status(200).json(teams);
+      let teamData = []
+      teams.map(team => {
+        teamData.push({
+          nama_tim: team.nama_tim,
+          username: team.username,
+          barcode: team.barcode,
+          EventId: team.EventId, 
+          nama_event: team.Event.nama_event})
+      })
+      res.status(200).json(teamData);
     }
     catch (err) {
       next(err);
@@ -110,6 +129,7 @@ class TeamController {
       const team = await Team.findOne({
         where: { id }, include: Event
       });
+      team['nama_event']
       res.status(200).json(team);
     }
     catch (err) {
