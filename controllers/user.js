@@ -26,7 +26,7 @@ class UserController {
         })
         res.status(201).json({ id, nama, EventId });
       } else {
-        res.status(401).json({ message: 'User sudah ada' });
+        res.status(401).json({ message: 'User already exist' });
       }
     }
     catch(err) {
@@ -43,9 +43,14 @@ class UserController {
       role: 'admin'
     };
     try {
-      const newUser = await User.create(userData);
-      const { id, nama, EventId } = newUser;
-      res.status(201).json({ id, nama, EventId });
+      const user = await User.findOne({ where: { no_wa: userData.no_wa } });
+      if (!Boolean(user)) {
+        const newUser = await User.create(userData);
+        const { id, nama, EventId } = newUser;
+        res.status(201).json({ id, nama, EventId });
+      } else {
+        res.status(401).json({ message: 'User already exist' });
+      }
     }
     catch(err) {
       console.log(err)

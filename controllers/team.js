@@ -7,9 +7,7 @@ const config = require(__dirname + '/../config/config.json')[env];
 const { Team } = require('../models')
 const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken')
-
-
-let sequelize;
+let sequelize
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
@@ -66,13 +64,26 @@ class TeamController {
     }
   };
 
-  static async findTeam(req, res, next) {
+  static async getTeamInfo(req, res, next) {
     const id = req.team.id
     try {
       const team = await Team.findOne({
         where: { id }
       });
       res.status(200).json(team);
+    }
+    catch(err) {
+      next(err);
+    }
+  }
+
+  static async findTeamByEvent(req, res, next) {
+    const EventId = req.params.id
+    try {
+      const teams = await Team.findAll({
+        where: { EventId }
+      });
+      res.status(200).json(teams);
     }
     catch(err) {
       next(err);
@@ -92,7 +103,7 @@ class TeamController {
     }
   }
 
-  static async findKlasemen(req, res, next) {
+  static async getKlasemen(req, res, next) {
     const EventId = req.query.EventId
     const status = req.query.status
     try {

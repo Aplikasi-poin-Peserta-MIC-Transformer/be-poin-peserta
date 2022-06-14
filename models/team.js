@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Team.hasMany(models.User, {foreignKey: 'TeamId', sourceKey: 'id'})
+      Team.hasMany(models.Team_member, {foreignKey: 'TeamId', sourceKey: 'id'})
       Team.hasMany(models.Point, {foreignKey: 'TeamId_or_UserId', sourceKey: 'id'})
       Team.hasMany(models.Pos_step, {foreignKey: 'TeamId_or_UserId', sourceKey: 'id'})
       Team.belongsTo(models.Event, {foreignKey: 'EventId', targetKey: 'id'})

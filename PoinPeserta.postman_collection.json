@@ -214,11 +214,6 @@
 							"key": "perusahaan",
 							"value": "PT Tester",
 							"type": "text"
-						},
-						{
-							"key": "EventId",
-							"value": "1",
-							"type": "text"
 						}
 					]
 				},
@@ -485,6 +480,40 @@
 			"response": []
 		},
 		{
+			"name": "localhost:3000/api/v1/teams/team/:id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYV90aW0iOiJUZXN0IFRlYW0gMDEiLCJFdmVudElkIjoxLCJpYXQiOjE2NTQ4NTcxODcsImV4cCI6MTY1NTI4OTE4N30.mqvu7wVu_io3LEr-Nc3-4VLzqBj2EKyXjfEKfqwoIL0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/v1/teams/team/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"teams",
+						"team",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "localhost:3000/api/v1/teams/:id",
 			"request": {
 				"method": "GET",
@@ -510,7 +539,44 @@
 					"variable": [
 						{
 							"key": "id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/v1/teams/klasemen",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYV90aW0iOiJUZXN0IFRlYW0gMDEiLCJFdmVudElkIjoxLCJpYXQiOjE2NTQ4NTcxODcsImV4cCI6MTY1NTI4OTE4N30.mqvu7wVu_io3LEr-Nc3-4VLzqBj2EKyXjfEKfqwoIL0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/v1/teams/klasemen?EventId=1&status=team",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"teams",
+						"klasemen"
+					],
+					"query": [
+						{
+							"key": "EventId",
 							"value": "1"
+						},
+						{
+							"key": "status",
+							"value": "team"
 						}
 					]
 				}
@@ -689,6 +755,44 @@
 						"api",
 						"v1",
 						"gifts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/v1/gifts/redeem/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwibmFtYSI6IkFkbWluIDIzNCIsInJvbGUiOiJ1c2VyIiwiRXZlbnRJZCI6MSwiaWF0IjoxNjU1MDg4NzA0LCJleHAiOjE2NTU1MjA3MDR9.hV-alMAw_9e5f_Co7-REQQJ8uZKRHYNgPd2oqw-wUGk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/gifts/redeem/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"gifts",
+						"redeem",
 						":id"
 					],
 					"variable": [

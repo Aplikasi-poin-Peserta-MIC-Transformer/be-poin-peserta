@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Point, {foreignKey: 'TeamId_or_UserId', sourceKey: 'id'})
       User.hasMany(models.Pos_step, {foreignKey: 'TeamId_or_UserId', sourceKey: 'id'})
       User.hasMany(models.Log_point, {foreignKey: 'UserId', sourceKey: 'id'})
-      User.belongsTo(models.Team, {foreignKey: 'TeamId', targetKey: 'id'})
       User.belongsTo(models.Event, {foreignKey: 'EventId', targetKey: 'id'})
       User.belongsToMany(models.Gift, {through: models.User_Gift, foreignKey: 'UserId', otherKey: 'GiftId'})
     }
@@ -75,7 +74,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       defaultValue: 'user'
     },
-    TeamId: DataTypes.INTEGER,
     EventId: DataTypes.INTEGER
   }, {
     sequelize,
