@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    username: DataTypes.STRING,
     barcode: DataTypes.STRING,
     EventId: DataTypes.INTEGER
   }, {
