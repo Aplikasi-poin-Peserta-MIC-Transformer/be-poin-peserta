@@ -76,7 +76,8 @@ class TeamController {
       });
       const event = await Event.findOne({ where: { id: team.EventId } })
       const [total_poin, metadata] = await sequelize.query(`select ifnull(total_poin,0) as point from Points where TeamId_or_UserId = ${id} limit 0,1`)
-      res.status(200).json({ ...team.dataValues, nama_event: event.nama_event, total_poin: total_poin[0]?.point });
+      const [pos, posMeta] = await sequelize.query(`select pos from Pos_steps where TeamId_or_UserId = ${id} limit 0,1`)
+      res.status(200).json({ ...team.dataValues, nama_event: event.nama_event, total_poin: total_poin[0]?.point, pos: pos[0]?.pos, jml_pos: event.jml_pos });
     }
     catch (err) {
       next(err);
@@ -122,10 +123,12 @@ class TeamController {
     const id = req.params.id
     try {
       const team = await Team.findOne({
-        where: { id }, include: Event
+        where: { id }
       });
-      team['nama_event']
-      res.status(200).json(team);
+      const event = await Event.findOne({ where: { id: team.EventId } })
+      const [total_poin, metadata] = await sequelize.query(`select ifnull(total_poin,0) as point from Points where TeamId_or_UserId = ${id} limit 0,1`)
+      const [pos, posMeta] = await sequelize.query(`select pos from Pos_steps where TeamId_or_UserId = ${id} limit 0,1`)
+      res.status(200).json({ ...team.dataValues, nama_event: event.nama_event, total_poin: total_poin[0]?.point, pos: pos[0]?.pos, jml_pos: event.jml_pos });
     }
     catch (err) {
       next(err);
