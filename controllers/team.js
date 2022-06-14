@@ -72,10 +72,10 @@ class TeamController {
     const id = req.team.id
     try {
       const team = await Team.findOne({
-        where: { id }, include: Event
+        where: { id }
       });
-      team['nama_event'] = team.Event.nama_event
-      res.status(200).json(team);
+      const event = await Event.findOne({ where: { id: team.EventId } })
+      res.status(200).json({ ...team.dataValues, nama_event: event.nama_event});
     }
     catch (err) {
       next(err);
