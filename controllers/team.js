@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
-const { Team } = require('../models')
+const { Team, Event } = require('../models')
 const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken')
 let sequelize
@@ -83,7 +83,7 @@ class TeamController {
 
   static async findAllTeam(req, res, next) {
     try {
-      const teams = await Team.findAll();
+      const teams = await Team.findAll({include: Event});
       res.status(200).json(teams);
     }
     catch (err) {
@@ -95,7 +95,7 @@ class TeamController {
     const EventId = req.params.id
     try {
       const teams = await Team.findAll({
-        where: { EventId }
+        where: { EventId }, include: Event
       });
       res.status(200).json(teams);
     }
@@ -108,7 +108,7 @@ class TeamController {
     const id = req.params.id
     try {
       const team = await Team.findOne({
-        where: { id }
+        where: { id }, include: Event
       });
       res.status(200).json(team);
     }
