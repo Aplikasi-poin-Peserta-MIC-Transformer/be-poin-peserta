@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
-const { Team, Event, Team_member } = require('../models')
+const { Team, Event, Team_member, Point, Pos_step } = require('../models')
 const { SECRET_KEY } = require('../config.json');
 const AccessToken = require('../helpers/accessToken')
 let sequelize
@@ -127,10 +127,10 @@ class TeamController {
         where: { id }
       });
       const event = await Event.findOne({ where: { id: team.EventId } })
-      const [total_poin, metadata] = await sequelize.query(`select ifnull(total_poin,0) as point from Points where TeamId_or_UserId = ${id} limit 0,1`)
-      const point = total_poin.legnth > 0 ? total_poin[0].point : 0
-      const [pos, posMeta] = await sequelize.query(`select pos from Pos_steps where TeamId_or_UserId = ${id} limit 0,1`)
-      const poCount = pos.legnth > 0 ? pos[0].pos : 0
+      const points = await Point.findOne({ where: { TeamId_or_UserId: id }, attributes: ['total_poin'] })
+      const point = points !== null ? points.total_poin : 0
+      const PosStep = await Pos_step.findOne({ where: { TeamId_or_UserId: id }, attributes: ['pos'] })
+      const poCount = PosStep !== null ? PosStep.pos : 0
       res.status(200).json({ ...team.dataValues, nama_event: event.nama_event, total_poin: point, pos: poCount, jml_pos: event.jml_pos });
     }
     catch (err) {
