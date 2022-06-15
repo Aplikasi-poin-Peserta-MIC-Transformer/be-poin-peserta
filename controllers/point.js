@@ -6,14 +6,14 @@ class PointController {
       const pointData = {
         total_poin: parseInt(req.body.total_poin),
         status: req.body.status,
-        TeamId_or_UserId: paseInt(req.body.TeamId_or_UserId),
+        TeamId_or_UserId: parseInt(req.body.TeamId_or_UserId),
         EventId: parseInt(req.body.eventId),
         pos: parseInt(req.body.pos)
       }
       const pointStep = {
         pos: parseInt(req.body.pos),
         status: req.body.status,
-        TeamId_or_UserId: paseInt(req.body.TeamId_or_UserId),
+        TeamId_or_UserId: parseInt(req.body.TeamId_or_UserId),
         EventId: parseInt(req.body.eventId)
       }
       const poinByUser = await Point.findOne({ where: { TeamId_or_UserId: pointData.TeamId_or_UserId, status: pointData.status, EventId: pointData.EventId } })
