@@ -3,14 +3,19 @@ const { Event } = require('../models')
 class EventController {
   static async add(req, res, next) {
     try {
-      const eventData = {
-        nama_event: req.body.nama_event,
-        gambar: req.body.gambar,
-        jml_pos: req.body.jml_pos
-      };
-      const newEvent = await Event.create(eventData);
-      const { id, nama_event } = newEvent;
-      res.status(201).json({ id, nama_event });
+      const file = req.file.path;
+      if (!file) {
+        res.status(400).json({ message: 'No File is selected' });
+      } else {
+        const eventData = {
+          nama_event: req.body.nama_event,
+          gambar: req.file.path,
+          jml_pos: req.body.jml_pos
+        };
+        const newEvent = await Event.create(eventData);
+        const { id, nama_event } = newEvent;
+        res.status(201).json({ id, nama_event });
+      }
     }
     catch(err) {
       next(err)
