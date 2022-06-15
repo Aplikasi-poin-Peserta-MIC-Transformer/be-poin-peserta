@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const { Team, Event } = require('../models')
+const { SECRET_KEY } = require('../config.json');
 const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken')
 let sequelize
@@ -16,7 +17,7 @@ class TeamController {
     const teamData = {
       username: req.body.username.toLowerCase().replace(/\s+/g, ''),
       nama_tim: req.body.nama_tim,
-      password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
+      password: Crypto.encrypt(req.body.password, SECRET_KEY),
       EventId: req.body.EventId
     };
     try {

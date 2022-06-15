@@ -1,12 +1,13 @@
 const { User } = require('../models')
 const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken');
+const { SECRET_KEY } = require('../config.json');
 
 class UserController {
   static async register(req, res, next) {
     const userData = {
       nama: req.body.nama,
-      password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
+      password: Crypto.encrypt(req.body.password, SECRET_KEY),
       no_wa: req.body.no_wa,
       barcode: `user/${req.body.no_wa}`,
       perusahaan: req.body.perusahaan,
@@ -36,7 +37,7 @@ class UserController {
   static async registerAdmin(req, res, next) {
     const userData = {
       nama: req.body.nama,
-      password: Crypto.encrypt(req.body.password, process.env.SECRET_KEY),
+      password: Crypto.encrypt(req.body.password, SECRET_KEY),
       no_wa: req.body.no_wa,
       perusahaan: req.body.perusahaan,
       role: 'admin'
