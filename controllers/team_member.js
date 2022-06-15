@@ -21,6 +21,20 @@ class TeamMemberController {
       console.log(err)
     };
   };
+
+  // get team member by team id
+  static async getTeamMember(req, res, next) {
+    const TeamId = req.params.id
+    try {
+      const members = await Team_member.findAll({
+        where: { TeamId }
+      });
+      res.status(200).json(members);
+    }
+    catch (err) {
+      next(err)
+    }
+  }
 }
 
 module.exports = TeamMemberController

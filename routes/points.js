@@ -2,6 +2,6 @@ const route = require('express').Router();
 const { PointController } = require('../controllers');
 const authentication = require('../middlewares/teamAuthentication');
 
-route.post('/', authentication, PointController.add);
+route.post('/', PointController.add);
 
 module.exports = route;

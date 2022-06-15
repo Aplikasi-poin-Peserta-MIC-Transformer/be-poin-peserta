@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
-const { Team, Event } = require('../models')
+const { Team, Event, Team_member } = require('../models')
 const { SECRET_KEY } = require('../config.json');
 const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken')
@@ -53,11 +53,14 @@ class TeamController {
         if (decrypted !== teamData.password) {
           res.status(401).json({ message: 'Wrong Team Name or Password' });
         } else {
+          // count Team_member where TeamId = team.id
+          const [count, metadata] = await sequelize.query(`select count(*) as count from Team_members where TeamId = ${team.id}`)
           const payload = {
             id: team.id,
             username: team.username,
             nama_tim: team.nama_tim,
-            EventId: team.EventId
+            EventId: team.EventId,
+            totalTeamMember: count[0].count
           };
           const accessToken = AccessToken.generate(payload);
           res.status(200).json({ id: team.id, username: team.username, nama_tim: team.nama_tim, accessToken });
