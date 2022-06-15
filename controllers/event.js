@@ -1,4 +1,7 @@
 const { Event } = require('../models')
+const fs = require('fs')
+const { promisify } = require('util')
+const unlinkAsync = promisify(fs.unlink)
 
 class EventController {
   static async add(req, res, next) {
@@ -18,6 +21,7 @@ class EventController {
       }
     }
     catch(err) {
+      await unlinkAsync(req.file.path)
       next(err)
     };
   }
