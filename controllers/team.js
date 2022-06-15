@@ -3,7 +3,6 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const { Team, Event, Team_member } = require('../models')
 const { SECRET_KEY } = require('../config.json');
-const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken')
 let sequelize
 if (config.use_env_variable) {
@@ -17,7 +16,7 @@ class TeamController {
     const teamData = {
       username: req.body.username.toLowerCase().replace(/\s+/g, ''),
       nama_tim: req.body.nama_tim,
-      password: Crypto.encrypt(req.body.password, SECRET_KEY),
+      password: req.body.password,
       EventId: req.body.EventId
     };
     try {
@@ -49,10 +48,6 @@ class TeamController {
       if (!team) {
         res.status(401).json({ message: 'Wrong Team Name or Password' });
       } else {
-        const decrypted = Crypto.decrypt(team.password);
-        if (decrypted !== teamData.password) {
-          res.status(401).json({ message: 'Wrong Team Name or Password' });
-        } else {
           // count Team_member where TeamId = team.id
           const [count, metadata] = await sequelize.query(`select count(*) as count from Team_members where TeamId = ${team.id}`)
           const payload = {
@@ -63,8 +58,7 @@ class TeamController {
             totalTeamMember: count[0].count
           };
           const accessToken = AccessToken.generate(payload);
-          res.status(200).json({ id: team.id, username: team.username, nama_tim: team.nama_tim, accessToken });
-        }
+          res.status(200).json({ id: team.id, username: team.username, nama_tim: team.nama_tim, accessToken });      
       }
     }
     catch (err) {
