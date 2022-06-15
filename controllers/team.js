@@ -49,13 +49,16 @@ class TeamController {
         res.status(401).json({ message: 'Wrong Team Name or Password' });
       } else {
           // count Team_member where TeamId = team.id
-          const [count, metadata] = await sequelize.query(`select count(*) as count from Team_members where TeamId = ${team.id}`)
+        const [count, metadata] = await sequelize.query(`select count(*) as count from Team_members where TeamId = ${team.id}`)
+        // get gambar from Event where id = team.EventId
+        const [event, metadata2] = await sequelize.query(`select gambar from Events where id = ${team.EventId}`)
           const payload = {
             id: team.id,
             username: team.username,
             nama_tim: team.nama_tim,
             EventId: team.EventId,
-            totalTeamMember: count[0].count
+            totalTeamMember: count[0].count,
+            gambar: event[0].gambar
           };
           const accessToken = AccessToken.generate(payload);
           res.status(200).json({ id: team.id, username: team.username, nama_tim: team.nama_tim, accessToken });      
