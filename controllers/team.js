@@ -111,7 +111,7 @@ class TeamController {
         FROM Teams AS a
         RIGHT JOIN
         Events AS b ON a.EventId = b.id where b.id = ${EventId}
-        ) AS v ORDER BY id DESC
+        ) AS v ORDER BY id ASC
       `);
       res.status(200).json(results);
     }

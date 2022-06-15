@@ -51,18 +51,23 @@ class EventController {
   }
 
   static async update(req, res, next) {
-    const id = req.params.id
     try {
-      const eventData = {
-        nama_event: req.body.nama_event,
-        gambar: req.body.gambar,
-        jml_pos: req.body.jml_pos
-      };
-      const event = await Event.update(eventData, {
-        where: { id },
-        returning: true
-      })
-      res.status(200).json(event[1])
+      const id = req.params.id
+      const file = req.file.path;
+      if (!file) {
+        res.status(400).json({ message: 'No File is selected' });
+      } else {
+        const eventData = {
+          nama_event: req.body.nama_event,
+          gambar: req.file.path,
+          jml_pos: req.body.jml_pos
+        };
+        await Event.update(eventData, {
+          where: { id },
+          returning: true
+        })
+        res.status(200).json('Event has been updated')
+      }
   }
     catch (err) {
       next(err)
