@@ -10,9 +10,14 @@ class PointController {
         EventId: req.body.eventId,
         pos: req.body.pos
       }
+      const pointStep = {
+        pos: req.body.pos,
+        TeamId_or_UserId: req.body.TeamId_or_UserId,
+        EventId: req.body.eventId
+      }
       const poinByUser = await Point.findOne({ where: { TeamId_or_UserId: pointData.TeamId_or_UserId, status: pointData.status, EventId: pointData.EventId } })
       if (!Boolean(poinByUser)) {
-        const posStep = await Pos_step.create(pointData);
+        const posStep = await Pos_step.create(pointStep);
         const newPoint = await Point.create(pointData);
         const { pos } = posStep;
         const { TeamId_or_UserId, status, total_poin } = newPoint;

@@ -11,12 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Pos_step.belongsTo(models.Event, { foreignKey: 'EventId', targetKey: 'id' })
     }
   }
   Pos_step.init({
     TeamId_or_UserId: DataTypes.STRING,
     pos: DataTypes.INTEGER,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    EventId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Pos_step',
