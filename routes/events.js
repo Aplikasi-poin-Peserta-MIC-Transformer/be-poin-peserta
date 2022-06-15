@@ -8,7 +8,7 @@ const diskStorage = require('../config/uploadStorage');
 route.get('/', EventController.findAll);
 route.get('/:id', EventController.findById);
 route.post('/add', multer({ storage: diskStorage }).single("gambar"), EventController.add);
-route.put('/:id', authentication, adminAuthorization, EventController.update);
+route.put('/:id', authentication, adminAuthorization, multer({ storage: diskStorage }).single("gambar"), EventController.update);
 route.delete('/:id', authentication, adminAuthorization, EventController.delete);
 
 module.exports = route;
