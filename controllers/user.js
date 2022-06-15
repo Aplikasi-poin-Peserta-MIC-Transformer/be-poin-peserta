@@ -1,5 +1,4 @@
 const { User } = require('../models')
-const Crypto = require('../helpers/cryptojs')
 const AccessToken = require('../helpers/accessToken');
 const { SECRET_KEY } = require('../config.json');
 
@@ -7,7 +6,7 @@ class UserController {
   static async register(req, res, next) {
     const userData = {
       nama: req.body.nama,
-      password: Crypto.encrypt(req.body.password, SECRET_KEY),
+      password: req.body.password,
       no_wa: req.body.no_wa,
       barcode: `user/${req.body.no_wa}`,
       perusahaan: req.body.perusahaan,
@@ -37,7 +36,7 @@ class UserController {
   static async registerAdmin(req, res, next) {
     const userData = {
       nama: req.body.nama,
-      password: Crypto.encrypt(req.body.password, SECRET_KEY),
+      password: req.body.password,
       no_wa: req.body.no_wa,
       perusahaan: req.body.perusahaan,
       role: 'admin'
@@ -71,10 +70,6 @@ class UserController {
       if (!user) {
         res.status(401).json({ message: 'Wrong Whatsapp Number or Password'});
       } else {
-        const decrypted = Crypto.decrypt(user.password);
-        if (decrypted !== userData.password) {
-          res.status(401).json({ message: 'Wrong Whatsapp Number or Password' });
-        } else {
           const payload = {
             id: user.id,
             nama: user.nama,
@@ -82,8 +77,7 @@ class UserController {
             EventId: user.EventId
           };
           const accessToken = AccessToken.generate(payload);
-          res.status(200).json({ id: user.id, nama: user.nama, accessToken});
-        }
+          res.status(200).json({ id: user.id, nama: user.nama, accessToken});    
       }
     }
     catch(err) {
