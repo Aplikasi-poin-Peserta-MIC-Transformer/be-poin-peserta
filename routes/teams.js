@@ -8,7 +8,7 @@ route.post('/member/:id', TeamMemberController.addMember);
 route.get('/member/:id', TeamMemberController.getTeamMember);
 route.get('/team/:id', TeamController.findTeamById);
 route.get('/klasemen', TeamController.getKlasemen); //dengan query params => /klasemen?EventId=1&status=team
-route.get('/team', TeamController.getTeamInfo);
+route.get('/team', authentication, TeamController.getTeamInfo);
 route.get('/', TeamController.findAllTeam);
 route.get('/:id', TeamController.findTeamByEvent);
 

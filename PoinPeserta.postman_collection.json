@@ -626,12 +626,12 @@
 							"urlencoded": [
 								{
 									"key": "no_wa",
-									"value": "081234567890",
+									"value": "085882441187",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "123456",
+									"value": "@Silahkan567890",
 									"type": "text"
 								}
 							]
@@ -668,15 +668,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "250"
+							"value": "579"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"fa-SEFRbPZ10rgWLE8U1451yzJLZck\""
+							"value": "W/\"243-a8UuQmetFvt+oKqpGwOtf8WBMfs\""
 						},
 						{
 							"key": "Date",
-							"value": "Wed, 15 Jun 2022 07:08:53 GMT"
+							"value": "Tue, 28 Jun 2022 07:56:18 GMT"
 						},
 						{
 							"key": "Connection",
@@ -688,7 +688,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"id\": 2,\n    \"nama\": \"Tester Admin\",\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtYSI6IlRlc3RlciBBZG1pbiIsInJvbGUiOiJhZG1pbiIsIkV2ZW50SWQiOjEsImlhdCI6MTY1NTI3NjkzMywiZXhwIjoxNjU1NzA4OTMzfQ.HGdOUFTCL6ncUk36diDRznn_0rE6-Op2Sbxib2fLZy0\"\n}"
+					"body": "{\n    \"id\": 1,\n    \"nama\": \"Admin 01\",\n    \"no_wa\": \"085882441187\",\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkFkbWluIDAxIiwibm9fd2EiOiIwODU4ODI0NDExODciLCJFdmVudElkIjoxLCJnYW1iYXIiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vcHcvQU0tSktMWHFoYnJ5eHBOOEVZZ183ZzFaQ2Rka1Q3N2ZCTHc4UHJrbFRMUlpGaDJVVjVodk11WTRPcVdTemk4bHcxR1dPTkxuUzBnekJlTVdPWlU0c3BoYUhYMWp6Yy04UDAxa0pYUjdzUk5KRVdXZ2tFUXg0eGNIQUlVTzJmenBjbGRWa2RIcnBGYVB4QkNKWW00ak9QWl9oNnE0PXc1ODMtaDQxMi1ubz9hdXRodXNlcj0wIiwiaWF0IjoxNjU2NDAyOTc4LCJleHAiOjE2NTY4MzQ5Nzh9.vN6S6UVbsZ_iCCDyWui0rX4nTjYZ0DC3TW69lcP57wM\"\n}"
 				}
 			]
 		},
@@ -717,7 +717,273 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/users/user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkFkbWluIDAxIiwibm9fd2EiOiIwODU4ODI0NDExODciLCJFdmVudElkIjoxLCJnYW1iYXIiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vcHcvQU0tSktMWHFoYnJ5eHBOOEVZZ183ZzFaQ2Rka1Q3N2ZCTHc4UHJrbFRMUlpGaDJVVjVodk11WTRPcVdTemk4bHcxR1dPTkxuUzBnekJlTVdPWlU0c3BoYUhYMWp6Yy04UDAxa0pYUjdzUk5KRVdXZ2tFUXg0eGNIQUlVTzJmenBjbGRWa2RIcnBGYVB4QkNKWW00ak9QWl9oNnE0PXc1ODMtaDQxMi1ubz9hdXRodXNlcj0wIiwiaWF0IjoxNjU2NDAyOTc4LCJleHAiOjE2NTY4MzQ5Nzh9.vN6S6UVbsZ_iCCDyWui0rX4nTjYZ0DC3TW69lcP57wM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/v1/users/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "246"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f6-tWCLNfbcV4lPOHyQwtRvWIJwpWY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jun 2022 08:01:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"nama\": \"Admin 01\",\n    \"password\": \"@Silahkan567890\",\n    \"no_wa\": \"085882441187\",\n    \"barcode\": null,\n    \"perusahaan\": \"MIC Transformer\",\n    \"role\": \"admin\",\n    \"EventId\": 1,\n    \"createdAt\": \"2022-06-13T07:30:51.000Z\",\n    \"updatedAt\": \"2022-06-13T07:30:51.000Z\",\n    \"total_poin\": 264\n}"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/api/v1/users/user/:id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkFkbWluIDAxIiwibm9fd2EiOiIwODU4ODI0NDExODciLCJFdmVudElkIjoxLCJnYW1iYXIiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vcHcvQU0tSktMWHFoYnJ5eHBOOEVZZ183ZzFaQ2Rka1Q3N2ZCTHc4UHJrbFRMUlpGaDJVVjVodk11WTRPcVdTemk4bHcxR1dPTkxuUzBnekJlTVdPWlU0c3BoYUhYMWp6Yy04UDAxa0pYUjdzUk5KRVdXZ2tFUXg0eGNIQUlVTzJmenBjbGRWa2RIcnBGYVB4QkNKWW00ak9QWl9oNnE0PXc1ODMtaDQxMi1ubz9hdXRodXNlcj0wIiwiaWF0IjoxNjU2NDAyOTc4LCJleHAiOjE2NTY4MzQ5Nzh9.vN6S6UVbsZ_iCCDyWui0rX4nTjYZ0DC3TW69lcP57wM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/v1/users/user/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/users/user/:id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkFkbWluIDAxIiwibm9fd2EiOiIwODU4ODI0NDExODciLCJFdmVudElkIjoxLCJnYW1iYXIiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vcHcvQU0tSktMWHFoYnJ5eHBOOEVZZ183ZzFaQ2Rka1Q3N2ZCTHc4UHJrbFRMUlpGaDJVVjVodk11WTRPcVdTemk4bHcxR1dPTkxuUzBnekJlTVdPWlU0c3BoYUhYMWp6Yy04UDAxa0pYUjdzUk5KRVdXZ2tFUXg0eGNIQUlVTzJmenBjbGRWa2RIcnBGYVB4QkNKWW00ak9QWl9oNnE0PXc1ODMtaDQxMi1ubz9hdXRodXNlcj0wIiwiaWF0IjoxNjU2NDAyOTc4LCJleHAiOjE2NTY4MzQ5Nzh9.vN6S6UVbsZ_iCCDyWui0rX4nTjYZ0DC3TW69lcP57wM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/v1/users/user/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "273"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"111-JR6FA00FcvU1z/tI1cmL4GmwYyA\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jun 2022 08:10:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"nama\": \"Admin 01\",\n    \"password\": \"@Silahkan567890\",\n    \"no_wa\": \"085882441187\",\n    \"barcode\": null,\n    \"perusahaan\": \"MIC Transformer\",\n    \"role\": \"admin\",\n    \"EventId\": 1,\n    \"createdAt\": \"2022-06-13T07:30:51.000Z\",\n    \"updatedAt\": \"2022-06-13T07:30:51.000Z\",\n    \"nama_event\": \"Development\",\n    \"total_poin\": 264\n}"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/api/v1/users/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dGVhbTAxIiwibmFtYV90aW0iOiJUZXN0IFRlYW0gMDEiLCJFdmVudElkIjoxLCJpYXQiOjE2NTUyNzQ2ODcsImV4cCI6MTY1NTcwNjY4N30.3jQQcB6t4aC4aylXnhb28WAJM0PMeYclZ89FWfXoiks",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/v1/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/users/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dGVhbTAxIiwibmFtYV90aW0iOiJUZXN0IFRlYW0gMDEiLCJFdmVudElkIjoxLCJpYXQiOjE2NTUyNzQ2ODcsImV4cCI6MTY1NTcwNjY4N30.3jQQcB6t4aC4aylXnhb28WAJM0PMeYclZ89FWfXoiks",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/v1/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "836"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"344-VKUMr/wl4lZLvT55hvKfLmECUMg\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jun 2022 09:03:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nama\": \"Admin 01\",\n        \"password\": \"@Silahkan567890\",\n        \"no_wa\": \"085882441187\",\n        \"barcode\": null,\n        \"perusahaan\": \"MIC Transformer\",\n        \"role\": \"admin\",\n        \"createdAt\": \"2022-06-13T07:30:51.000Z\",\n        \"updatedAt\": \"2022-06-13T07:30:51.000Z\",\n        \"EventId\": 1,\n        \"TeamId\": null,\n        \"nama_event\": \"Development\",\n        \"total_poin\": 264\n    },\n    {\n        \"id\": 2,\n        \"nama\": \"Admin 02\",\n        \"password\": \"123456\",\n        \"no_wa\": \"081234567890\",\n        \"barcode\": null,\n        \"perusahaan\": \"MIC Transformer\",\n        \"role\": \"admin\",\n        \"createdAt\": \"2022-06-13T07:33:00.000Z\",\n        \"updatedAt\": \"2022-06-13T07:33:00.000Z\",\n        \"EventId\": 1,\n        \"TeamId\": null,\n        \"nama_event\": \"Development\",\n        \"total_poin\": 0\n    },\n    {\n        \"id\": 11,\n        \"nama\": \"Tester 01\",\n        \"password\": \"123456\",\n        \"no_wa\": \"081234567896\",\n        \"barcode\": \"\",\n        \"perusahaan\": \"PT Tester\",\n        \"role\": \"user\",\n        \"createdAt\": \"2022-06-13T14:34:04.000Z\",\n        \"updatedAt\": \"2022-06-13T14:34:04.000Z\",\n        \"EventId\": 1,\n        \"TeamId\": null,\n        \"nama_event\": \"Development\",\n        \"total_poin\": 0\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "localhost:3000/api/v1/users/:id",
@@ -750,7 +1016,192 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/users/:id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkFkbWluIDAxIiwibm9fd2EiOiIwODU4ODI0NDExODciLCJFdmVudElkIjoxLCJnYW1iYXIiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vcHcvQU0tSktMWHFoYnJ5eHBOOEVZZ183ZzFaQ2Rka1Q3N2ZCTHc4UHJrbFRMUlpGaDJVVjVodk11WTRPcVdTemk4bHcxR1dPTkxuUzBnekJlTVdPWlU0c3BoYUhYMWp6Yy04UDAxa0pYUjdzUk5KRVdXZ2tFUXg0eGNIQUlVTzJmenBjbGRWa2RIcnBGYVB4QkNKWW00ak9QWl9oNnE0PXc1ODMtaDQxMi1ubz9hdXRodXNlcj0wIiwiaWF0IjoxNjU2NDAyOTc4LCJleHAiOjE2NTY4MzQ5Nzh9.vN6S6UVbsZ_iCCDyWui0rX4nTjYZ0DC3TW69lcP57wM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/v1/users/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "836"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"344-VKUMr/wl4lZLvT55hvKfLmECUMg\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jun 2022 08:08:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nama\": \"Admin 01\",\n        \"password\": \"@Silahkan567890\",\n        \"no_wa\": \"085882441187\",\n        \"barcode\": null,\n        \"perusahaan\": \"MIC Transformer\",\n        \"role\": \"admin\",\n        \"createdAt\": \"2022-06-13T07:30:51.000Z\",\n        \"updatedAt\": \"2022-06-13T07:30:51.000Z\",\n        \"EventId\": 1,\n        \"TeamId\": null,\n        \"nama_event\": \"Development\",\n        \"total_poin\": 264\n    },\n    {\n        \"id\": 2,\n        \"nama\": \"Admin 02\",\n        \"password\": \"123456\",\n        \"no_wa\": \"081234567890\",\n        \"barcode\": null,\n        \"perusahaan\": \"MIC Transformer\",\n        \"role\": \"admin\",\n        \"createdAt\": \"2022-06-13T07:33:00.000Z\",\n        \"updatedAt\": \"2022-06-13T07:33:00.000Z\",\n        \"EventId\": 1,\n        \"TeamId\": null,\n        \"nama_event\": \"Development\",\n        \"total_poin\": 0\n    },\n    {\n        \"id\": 11,\n        \"nama\": \"Tester 01\",\n        \"password\": \"123456\",\n        \"no_wa\": \"081234567896\",\n        \"barcode\": \"\",\n        \"perusahaan\": \"PT Tester\",\n        \"role\": \"user\",\n        \"createdAt\": \"2022-06-13T14:34:04.000Z\",\n        \"updatedAt\": \"2022-06-13T14:34:04.000Z\",\n        \"EventId\": 1,\n        \"TeamId\": null,\n        \"nama_event\": \"Development\",\n        \"total_poin\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/api/v1/users/klasemen",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dGVhbTAxIiwibmFtYV90aW0iOiJUZXN0IFRlYW0gMDEiLCJFdmVudElkIjoxLCJpYXQiOjE2NTUyNzQ2ODcsImV4cCI6MTY1NTcwNjY4N30.3jQQcB6t4aC4aylXnhb28WAJM0PMeYclZ89FWfXoiks",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/v1/users/klasemen?EventId=1&status=user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"klasemen"
+					],
+					"query": [
+						{
+							"key": "EventId",
+							"value": "1"
+						},
+						{
+							"key": "status",
+							"value": "user"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/users/klasemen",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0dGVhbTAxIiwibmFtYV90aW0iOiJUZXN0IFRlYW0gMDEiLCJFdmVudElkIjoxLCJpYXQiOjE2NTUyNzQ2ODcsImV4cCI6MTY1NTcwNjY4N30.3jQQcB6t4aC4aylXnhb28WAJM0PMeYclZ89FWfXoiks",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/v1/users/klasemen?EventId=1&status=user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"klasemen"
+							],
+							"query": [
+								{
+									"key": "EventId",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "user"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "272"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"110-LXz7Cb5oxprRI5K0p31BZG0mr+I\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jun 2022 08:58:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nama_event\": \"Development\",\n    \"klasemen\": [\n        {\n            \"nama\": \"Admin 01\",\n            \"nama_event\": \"Development\",\n            \"total_poin\": 264,\n            \"STATUS\": \"user\"\n        },\n        {\n            \"nama\": \"Admin 02\",\n            \"nama_event\": \"Development\",\n            \"total_poin\": 0,\n            \"STATUS\": \"0\"\n        },\n        {\n            \"nama\": \"Tester 01\",\n            \"nama_event\": \"Development\",\n            \"total_poin\": 0,\n            \"STATUS\": \"0\"\n        }\n    ]\n}"
+				}
+			]
 		},
 		{
 			"name": "localhost:3000/api/v1/teams/register",
@@ -1574,6 +2025,137 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"nama_event\": \"Test Event 01\",\n    \"klasemen\": [\n        {\n            \"nama_tim\": \"Test Team 01\",\n            \"nama_event\": \"Test Event 01\",\n            \"total_poin\": 130,\n            \"STATUS\": \"team\"\n        },\n        {\n            \"nama_tim\": \"Test Team 02\",\n            \"nama_event\": \"Test Event 01\",\n            \"total_poin\": 70,\n            \"STATUS\": \"team\"\n        },\n        {\n            \"nama_tim\": \"Test Team 03\",\n            \"nama_event\": \"Test Event 01\",\n            \"total_poin\": 0,\n            \"STATUS\": \"0\"\n        },\n        {\n            \"nama_tim\": \"Test Team 04\",\n            \"nama_event\": \"Test Event 01\",\n            \"total_poin\": 0,\n            \"STATUS\": \"0\"\n        },\n        {\n            \"nama_tim\": \"Test Team 05\",\n            \"nama_event\": \"Test Event 01\",\n            \"total_poin\": 0,\n            \"STATUS\": \"0\"\n        },\n        {\n            \"nama_tim\": \"Test Team 06\",\n            \"nama_event\": \"Test Event 01\",\n            \"total_poin\": 0,\n            \"STATUS\": \"0\"\n        },\n        {\n            \"nama_tim\": \"Test Team 07\",\n            \"nama_event\": \"Test Event 01\",\n            \"total_poin\": 0,\n            \"STATUS\": \"0\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/api/v1/points/user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "total_poin",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "user",
+							"type": "text"
+						},
+						{
+							"key": "TeamId_or_UserId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "eventId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/points/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"points",
+						"user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/points/user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "total_poin",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "TeamId_or_UserId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "eventId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/points/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"user"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-NadJJGETex+AO5C7Gj+GL2q958Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jun 2022 09:31:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Point has been updated\"\n}"
 				}
 			]
 		},

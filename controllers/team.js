@@ -91,7 +91,7 @@ class TeamController {
         SELECT * FROM (
         SELECT a.*, b.nama_event, IFNULL((SELECT total_poin FROM Points WHERE TeamId_or_UserId = a.id LIMIT 0,1),0) AS total_poin
         FROM Teams AS a
-        RIGHT JOIN
+        INNER JOIN
         Events AS b ON a.EventId = b.id
         ) AS v ORDER BY total_poin DESC
       `);
