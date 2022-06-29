@@ -1,4 +1,4 @@
-const { Gift, User } = require('../models');
+const { Gift, User, User_Gift, Point } = require('../models');
 
 class GiftController {
   static async add(req, res, next) {
@@ -81,27 +81,37 @@ class GiftController {
 
   static async redeem(req, res, next) {
     const id = req.params.id
-    const userId = req.user.id
+    const UserId = req.user.id
     try {
       const gift = await Gift.findOne({
         where: { id }
       })
-      const giftData = {
-        stok: +gift.stok - 1
-      };
-      const price = +gift.price
-      const userData = {
-        poin: +req.user.poin - price
-      };
-      const updatedGift = await Gift.update(giftData, {
-        where: { id },
-        returning: true
+      const userPoint = await Point.findOne({
+        where: { TeamId_or_UserId: UserId, status: 'user' }
       })
-      const updatedUser = await User.update(userData, {
-        where: { id: userId },
-        returning: true
-      })
-      res.status(200).json('gift is redeemed')
+      if (Boolean(userPoint)) {
+        if (userPoint.total_poin > gift.harga) {
+          const giftData = {
+            stok: gift.stok - 1
+          };
+          const userData = {
+            total_poin: userPoint.total_poin - gift.harga
+          };
+          await User_Gift.create({
+            UserId, 
+            GiftId: id
+          })
+          await Gift.update(giftData, {
+            where: { id },
+            returning: true
+          })
+          await Point.update(userData, {
+            where: { TeamId_or_UserId: UserId },
+            returning: true
+          })
+          res.status(200).json('gift is redeemed')
+        }
+      }
   }
     catch (err) {
       next(err)

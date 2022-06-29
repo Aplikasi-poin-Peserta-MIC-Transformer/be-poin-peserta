@@ -6,7 +6,7 @@ route.post('/add', GiftController.add);
 route.get('/', GiftController.findAll);
 route.get('/:id', GiftController.findById);
 route.put('/:id', GiftController.update);
-route.put('/redeem/:id', authentication, GiftController.redeem);
+route.post('/redeem/:id', authentication, GiftController.redeem);
 route.delete('/:id', GiftController.delete);
 
 module.exports = route;
