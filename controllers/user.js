@@ -75,7 +75,7 @@ class UserController {
         res.status(401).json({ message: 'Wrong User Name or Password' });
       } else {
         // get gambar from Event where id = user.EventId
-        const [event, metadata2] = await sequelize.query(`select gambar from Events where id = ${user.EventId}`)
+        const [event, metadata2] = await sequelize.query(`select gambar, nama_event from Events where id = ${user.EventId}`)
           const payload = {
             id: user.id,
             nama: user.nama,
