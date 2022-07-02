@@ -82,7 +82,8 @@ class UserController {
             no_wa: user.no_wa,
             EventId: user.EventId,
             gambar: event[0].gambar,
-            nama_event: event[0].nama_event
+            nama_event: event[0].nama_event,
+            perusahaan: user.perusahaan,
           };
           const accessToken = AccessToken.generate(payload);
           res.status(200).json({ id: user.id, nama: user.nama, no_wa: user.no_wa, accessToken });      
