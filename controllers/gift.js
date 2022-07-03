@@ -1,4 +1,4 @@
-const { Gift, User, User_Gift, Point } = require('../models');
+const { Gift, User_Gift, Point, Log_point } = require('../models');
 
 class GiftController {
   static async add(req, res, next) {
@@ -86,6 +86,12 @@ class GiftController {
       const gift = await Gift.findOne({
         where: { id }
       })
+      const logData = {
+        UserId,
+        GiftId: gift.id,
+        poin: gift.harga,
+        status: 'redeemGift'
+      }
       const userPoint = await Point.findOne({
         where: { TeamId_or_UserId: UserId, status: 'user' }
       })
@@ -109,6 +115,7 @@ class GiftController {
             where: { TeamId_or_UserId: UserId },
             returning: true
           })
+          await Log_point.create(logData)
           res.status(200).json('gift is redeemed')
         }
       }

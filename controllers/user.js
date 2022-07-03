@@ -186,6 +186,42 @@ class UserController {
       next(err);
     }
   }
+
+  static async update(req, res, next) {
+    const id = req.params.id
+    try {
+      const userData = {
+        nama: req.body.nama,
+        no_wa: req.body.no_wa,
+        perusahaan: req.body.perusahaan
+      }
+      const user = await User.update(userData, {
+        where: { id },
+        returning: true
+      })
+      res.status(200).json('user info is updated')
+  }
+    catch (err) {
+      next(err)
+    }
+  }
+
+  static async updatePassword(req, res, next) {
+    const id = req.params.id
+    try {
+      const userData = {
+        password: req.body.password
+      }
+      const user = await User.update(userData, {
+        where: { id },
+        returning: true
+      })
+      res.status(200).json('password is updated')
+  }
+    catch (err) {
+      next(err)
+    }
+  }
 };
 
 module.exports = UserController;

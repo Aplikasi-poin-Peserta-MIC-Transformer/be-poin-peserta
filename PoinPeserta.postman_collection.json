@@ -2379,7 +2379,240 @@
 					]
 				}
 			},
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/gifts/redeem/:id",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IkFkbWluIDAxIiwibm9fd2EiOiIwODU4ODI0NDExODciLCJFdmVudElkIjoxLCJnYW1iYXIiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vcHcvQU0tSktMWHFoYnJ5eHBOOEVZZ183ZzFaQ2Rka1Q3N2ZCTHc4UHJrbFRMUlpGaDJVVjVodk11WTRPcVdTemk4bHcxR1dPTkxuUzBnekJlTVdPWlU0c3BoYUhYMWp6Yy04UDAxa0pYUjdzUk5KRVdXZ2tFUXg0eGNIQUlVTzJmenBjbGRWa2RIcnBGYVB4QkNKWW00ak9QWl9oNnE0PXc1ODMtaDQxMi1ubz9hdXRodXNlcj0wIiwiaWF0IjoxNjU2NDkyMzk2LCJleHAiOjE2NTY5MjQzOTZ9.T20lxzmhce-UAJ5J_bw7gFTnp1bk4U9aTdj6ApGzTZQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/gifts/redeem/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"gifts",
+								"redeem",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "18"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"12-ONTGlDbDYvyi5SCVAPod9R9ZeGU\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 29 Jun 2022 08:58:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "\"gift is redeemed\""
+				}
+			]
+		},
+		{
+			"name": "localhost:3000/api/v1/logpoints/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IlRlc3RlciBBZG1pbiAwMSIsInJvbGUiOiJhZG1pbiIsIkV2ZW50SWQiOm51bGwsImlhdCI6MTY1NDkzMzE3MCwiZXhwIjoxNjU1MzY1MTcwfQ.NT0gi0q20M8iUp1u__74_oThw9Q8qPG8cReBwJYCBMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/logpoints/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"logpoints",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
 			"response": []
+		},
+		{
+			"name": "localhost:3000/api/v1/usergifts/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IlRlc3RlciBBZG1pbiAwMSIsInJvbGUiOiJhZG1pbiIsIkV2ZW50SWQiOm51bGwsImlhdCI6MTY1NDkzMzE3MCwiZXhwIjoxNjU1MzY1MTcwfQ.NT0gi0q20M8iUp1u__74_oThw9Q8qPG8cReBwJYCBMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/usergifts/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"usergifts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:3000/api/v1/usergifts/:id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtYSI6IlRlc3RlciBBZG1pbiAwMSIsInJvbGUiOiJhZG1pbiIsIkV2ZW50SWQiOm51bGwsImlhdCI6MTY1NDkzMzE3MCwiZXhwIjoxNjU1MzY1MTcwfQ.NT0gi0q20M8iUp1u__74_oThw9Q8qPG8cReBwJYCBMg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/usergifts/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"usergifts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "103"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"67-+CUW1c5sHqxCn3ayTQ5ajDBG7Qs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Jul 2022 10:49:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"UserId\": 1,\n        \"GiftId\": 1,\n        \"createdAt\": \"2022-06-29T08:58:50.000Z\",\n        \"updatedAt\": \"2022-06-29T08:58:50.000Z\"\n    }\n]"
+				}
+			]
 		}
 	]
 }
