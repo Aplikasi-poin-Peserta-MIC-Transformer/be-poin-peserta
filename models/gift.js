@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Gift.init({
     nama: DataTypes.STRING,
-    gambar: DataTypes.STRING,
+    gambar: DataTypes.TEXT,
     harga: DataTypes.INTEGER,
     stok: DataTypes.INTEGER
   }, {

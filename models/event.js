@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    gambar: DataTypes.STRING,
+    gambar: DataTypes.TEXT,
     jml_pos: {
       type: DataTypes.INTEGER,
       defaultValue: 0
